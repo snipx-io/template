@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "chalk": "^5.2.0",
+    "html-webpack-plugin": "^5.5.1",
     "webpack": "^5.79.0",
     "webpack-cli": "^5.0.1"
   }
