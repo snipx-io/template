@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import webpackConfig from '../../webpack.config.js'
+import webpackConfig from '../../config/webpack/production.js'
 
 const compiler = webpack(webpackConfig)
 
