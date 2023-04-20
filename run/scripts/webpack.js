@@ -1,6 +1,12 @@
 import webpack from 'webpack'
-import webpackConfig from '../../config/webpack/production.js'
+import webpackConfigDev from '../../config/webpack/development.js'
+import webpackConfigProd from '../../config/webpack/production.js'
 
-const compiler = webpack(webpackConfig)
-
-export default compiler
+export default {
+    development: function () {
+        return webpack(webpackConfigDev)
+    },
+    production: function () {
+        return webpack(webpackConfigProd)
+    }
+}
