@@ -1,6 +1,8 @@
 import chalk from 'chalk'
-import compiler from './scripts/webpack.js'
+import runWebpack from './scripts/webpack.js'
 import manifest from './scripts/manifest.js'
+
+let compiler = runWebpack.production()
 
 compiler.run((err, stats) => {
     // ...
@@ -9,7 +11,7 @@ compiler.run((err, stats) => {
       // ...
       console.log(manifest('production'))
     });
-  });
+});
 
 
 console.log(chalk.red('run build'))
