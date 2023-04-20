@@ -13,7 +13,7 @@ function App () {
 
 // Create a root.
 const root = ReactDOMClient.createRoot(
-    document.querySelector('body')
+    document.getElementById('app')
 )
 
 // Initial render: Render an element to the root.

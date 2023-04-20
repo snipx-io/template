@@ -30,7 +30,7 @@ export default {
     plugins: [
         new HtmlPlugin({
             filename: 'app.html',
-            templateContent: `<html><body></body></html>`
+            templateContent: `<html><body><div id="app"></div></body></html>`
         })
     ]
 }
