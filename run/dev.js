@@ -1,4 +1,3 @@
-import path from 'path'
 import { development } from './scripts/webpack.js'
 import manifest from './scripts/manifest.js'
 import { log, dlog }  from './scripts/log.js'
