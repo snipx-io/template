@@ -45,7 +45,8 @@ export default function (mode='development') {
     // Write the manifest.json file
     json.write(
         path.join(manifestOutDir, 'manifest.json'), 
-        merge(manifestCommon, manifestTarget)
+        merge(manifestCommon, manifestTarget),
+        mode
     )
 
     return true
