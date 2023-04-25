@@ -1,27 +1,25 @@
+import path from 'path'
 import { development } from './scripts/webpack.js'
 import manifest from './scripts/manifest.js'
-import log from './scripts/log.js'
+import { log, dlog }  from './scripts/log.js'
 
 let compiler = development()
 
-log.start('initializing development mode')
+log.start(dlog.bundle[0])
 
 compiler.watch(
     {
-        // Example
         aggregateTimeout: 300,
         poll: undefined,
     },
     (err, stats) => {
-        // Print watch/build result here...
         if (!err) {
-            log.success('bundled development mode')
+            log.passed(dlog.bundle[1])
             manifest('development')
-            log.end.pass('ready to try out in browser!')
-            console.log('================================')
+            log.watch(dlog.watch)
         }
         else {
-            log.end.fail('bundle failed, read below to find out why:')
+            log.failed(dlog.bundle[2])
             console.log(err)
         }
     }
