@@ -4,7 +4,7 @@ import { log, plog }  from './scripts/log.js'
 
 let compiler = production()
 
-log.start(plog.bundle[0])
+log.start(plog.start)
 
 compiler.run((err, stats) => {
     compiler.close((closeErr) => {
@@ -13,7 +13,7 @@ compiler.run((err, stats) => {
         manifest('production')
       }
       else {
-        log.failed(plog.bundle[2])
+        log.failed(plog.bundle[0])
         console.log(closeErr)
       }
     })

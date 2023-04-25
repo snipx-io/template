@@ -4,7 +4,7 @@ import { log, dlog }  from './scripts/log.js'
 
 let compiler = development()
 
-log.start(dlog.bundle[0])
+log.start(dlog.start)
 
 compiler.watch(
     {
@@ -18,7 +18,7 @@ compiler.watch(
             log.watch(dlog.watch)
         }
         else {
-            log.failed(dlog.bundle[2])
+            log.failed(dlog.bundle[0])
             console.log(err)
         }
     }

@@ -3,37 +3,36 @@ import chalk from 'chalk'
 const start = chalk.bold.cyan
 const error = chalk.bold.red
 const success = chalk.bold.green
+const watch = chalk.bold.magenta
 
 export const log = {
     start: function (message) { console.log(start('🔧  ' + message)) },
     failed: function (message) { console.log(error('❌  ' + message)) },
     passed: function (message) { console.log(success('✅  ' + message)) },
-    watch: function (message) { console.log(success('👀  ' + message)) }
+    watch: function (message) { console.log(watch('👀  ' + message)) }
 }
 
 export const dlog = {
-    watch: 'watching for next change...',
+    start: 'initializing development bundle\n',
+    watch: 'watching for next change... \n================================',
     bundle: [
-        'initializing bundle development mode', // start
-        'bundled development mode', // pass
-        'bundle failed in development mode' // fail
+        'bundle failed in development mode', // fail
+        'bundled development mode' // pass
     ],
     manifest: [
-        'initializing manifest development mode', // start
-        'wrote manifest development mode', // pass
-        'manifest development mode failed' //fail
+        'manifest development mode failed', //fail
+        'wrote manifest development mode' // pass
     ]
 }
 
 export const plog = {
+    start: 'initializing production bundle\n',
     bundle: [
-        'initializing bundle production mode', // start
-        'bundled production mode', // pass
-        'bundle failed in production mode' // fail
+        'bundle failed in production mode', // fail
+        'bundled production mode' // pass
     ],
     manifest: [
-        'initializing manifest production mode', // start
-        'wrote manifest production mode', // pass
-        'manifest production mode failed' // fail
+        'manifest production mode failed', // fail
+        'wrote manifest production mode' // pass
     ]
 }
