@@ -34,5 +34,9 @@ export const plog = {
     manifest: [
         'manifest production mode failed', // fail
         'wrote manifest production mode' // pass
+    ],
+    zip: [
+        'production mode zip failed', // fail
+        'zipped in production mode' // pass
     ]
 }
