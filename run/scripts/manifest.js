@@ -3,10 +3,10 @@ import path from 'path'
 import json from './json.js'
 import merge from 'deepmerge'
 
-let manifestCommon, 
-    manifestTarget, 
-    manifestOutDir = path.resolve('out', 'build'),
-    manifestConfigDir = path.resolve('config', 'manifest')
+const manifestOutDir = path.resolve('out', 'build')
+const manifestConfigDir = path.resolve('config', 'manifest')
+
+let manifestCommon, manifestTarget
 
 export default function (mode='development') {
     // Check for valid argument
