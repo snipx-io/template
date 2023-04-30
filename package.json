@@ -2,8 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "node run/dev.js",
-    "build": "node run/build.js",
-    "dist": "node run/dist.js"
+    "build": "node run/build.js"
   },
   "dependencies": {
     "react": "^18.2.0",
