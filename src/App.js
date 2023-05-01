@@ -2,6 +2,8 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 
+import './styles/global.css'
+
 // Main React App for extension
 function App () {
     return(
