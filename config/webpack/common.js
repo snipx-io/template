@@ -1,5 +1,4 @@
 import path from 'path'
-import HtmlPlugin from 'html-webpack-plugin'
 
 export default {
     entry: {
@@ -26,11 +25,5 @@ export default {
           }
         }
       ]
-    },
-    plugins: [
-        new HtmlPlugin({
-            filename: 'app.html',
-            templateContent: `<html><body><div id="app"></div></body></html>`
-        })
-    ]
+    }
 }
