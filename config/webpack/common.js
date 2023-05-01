@@ -1,4 +1,6 @@
 import path from 'path'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 
 export default {
     entry: {
@@ -29,7 +31,18 @@ export default {
           include: path.resolve('src', 'styles'),
           use: [
             'style-loader', 
-            'css-loader'
+            'css-loader', 
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    tailwindcss(path.resolve('config', 'tailwindcss.js')),
+                    autoprefixer()
+                  ]
+                }
+              }
+            }
           ]
         }
       ]
