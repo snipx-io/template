@@ -23,6 +23,14 @@ export default {
               ]
             }
           }
+        },
+        {
+          test: /\.css$/i,
+          include: path.resolve('src', 'styles'),
+          use: [
+            'style-loader', 
+            'css-loader'
+          ]
         }
       ]
     }
