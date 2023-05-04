@@ -4,7 +4,7 @@ import autoprefixer from 'autoprefixer';
 
 export default {
   entry: {
-    app: './src/App.js',
+    app: './src/App.jsx',
   },
   output: {
     filename: '[name].js',
