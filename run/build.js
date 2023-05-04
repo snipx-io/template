@@ -7,7 +7,8 @@ const compiler = production();
 
 log.start(plog.start);
 
-compiler.run((err, stats) => {
+compiler.run((err) => {
+  if (err) console.log(err);
   compiler.close((closeErr) => {
     if (!closeErr) {
       log.passed(plog.bundle[1]);
