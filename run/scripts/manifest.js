@@ -6,15 +6,9 @@ import json from './json.js';
 const manifestOutDir = path.resolve('out', 'build');
 const manifestConfigDir = path.resolve('config', 'manifest');
 
-let manifestCommon; let
-  manifestTarget;
+let manifestTarget;
 
-export default function (mode = 'development') {
-  // Check for valid argument
-  if (mode !== 'development' && mode !== 'production') {
-    mode = 'development';
-  }
-
+export default function manifest(mode = 'development') {
   // Create output folder
   if (!fs.existsSync(path.resolve('out'))) {
     fs.mkdirSync(path.resolve('out'));
@@ -24,29 +18,22 @@ export default function (mode = 'development') {
     }
   }
 
-  // Assign common manifest data
-  manifestCommon = json.read(
-    path.join(manifestConfigDir, 'common.json'),
-  );
-
-  // Assign target manifest data
-  switch (mode) {
-    case 'development':
-      manifestTarget = json.read(
-        path.join(manifestConfigDir, `${mode}.json`),
-      );
-      break;
-    case 'production':
-      manifestTarget = json.read(
-        path.join(manifestConfigDir, `${mode}.json`),
-      );
-      break;
+  // Get manifest JSON data
+  function getManifest(file) {
+    return json.read(path.join(manifestConfigDir, `${file}.json`));
   }
 
-  // Write the manifest.json file
+  // Assign `manifestTarget`
+  switch (mode) {
+    case 'development': manifestTarget = getManifest(mode); break;
+    case 'production': manifestTarget = getManifest(mode); break;
+    default: manifestTarget = getManifest('development'); break;
+  }
+
+  // Write manifest.json file
   json.write(
     path.join(manifestOutDir, 'manifest.json'),
-    merge(manifestCommon, manifestTarget),
+    merge(getManifest('common'), manifestTarget),
     mode,
   );
 
