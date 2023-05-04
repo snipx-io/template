@@ -8,7 +8,7 @@ const compiler = production();
 log.start(plog.start);
 
 compiler.run((err) => {
-  if (err) console.log(err);
+  if (err) console.log(err); // eslint-disable-line no-console
   compiler.close((closeErr) => {
     if (!closeErr) {
       log.passed(plog.bundle[1]);
@@ -16,7 +16,7 @@ compiler.run((err) => {
       if (process.env.npm_config_zip) zip();
     } else {
       log.failed(plog.bundle[0]);
-      console.log(closeErr);
+      console.log(closeErr); // eslint-disable-line no-console
     }
   });
 });

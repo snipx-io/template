@@ -14,7 +14,13 @@ export default {
       if (mode === 'development') log.passed(dlog.manifest[1]);
       else if (mode === 'production') log.passed(plog.manifest[1]);
     } catch (writeErr) {
-      if (mode === 'development') { log.failed(dlog.manifest[0]); console.log(writeErr); } else if (mode === 'production') { log.failed(plog.manifest[0]); console.log(writeErr); }
+      if (mode === 'development') {
+        log.failed(dlog.manifest[0]);
+        console.log(writeErr); // eslint-disable-line no-console
+      } else if (mode === 'production') {
+        log.failed(plog.manifest[0]);
+        console.log(writeErr); // eslint-disable-line no-console
+      }
     }
   },
 };

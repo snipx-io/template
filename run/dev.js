@@ -18,7 +18,7 @@ compiler.watch(
       log.watch(dlog.watch);
     } else {
       log.failed(dlog.bundle[0]);
-      console.log(err);
+      console.log(err); // eslint-disable-line no-console
     }
   },
 );

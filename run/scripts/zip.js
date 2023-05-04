@@ -25,7 +25,7 @@ export default function zip() {
     log.passed(plog.zip[1]);
   }).catch((err) => {
     log.failed(plog.zip[0]);
-    console.error(err.stack);
+    console.error(err.stack); // eslint-disable-line no-console
     process.exit(1);
   });
 }
