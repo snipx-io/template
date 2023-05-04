@@ -40,3 +40,10 @@ export const plog = {
     'zipped in production mode', // pass
   ],
 };
+
+export const lintlog = {
+  startNoFix: 'initializing linter without --fix\n',
+  startFix: 'initializing linter with --fix\n',
+  fixed: 'fixed all rebel .js files',
+  end: 'ready to be committed',
+};
