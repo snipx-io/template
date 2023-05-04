@@ -23,10 +23,16 @@ This template is for creating Chromium Extensions using React.js and TailwindCSS
         - write [manifest production mode](./config/manifest/production.json)
         - optional `--zip` argument
             - .zip the production bundle
+    - [npm run lint](./run/lint.js)
+        - lint all .js files using ESLint
+        - optional `--fix` argument
+            - passes *--fix* to ESLint CLI call
+
 ## Configure
 All configs live in the [config](./config/) directory. Currently, you can configure:
 - [Manifest](./config/manifest/)
 - [Webpack](./config/webpack/)
+- [ESLint](./config/.eslintrc.json)
 - [TailwindCSS](./config/tailwindcss.js)
 
 *Note: Manifest and Webpack have common, development, and production configs.*
