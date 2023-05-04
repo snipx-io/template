@@ -20,11 +20,18 @@
         "import/extensions": [
             0, { "js": "always" }
         ],
-        "import/no-extraneous-dependencies": [
-            "error", { "devDependencies": true }
+        "import/no-extraneous-dependencies":[
+            "error",
+            {
+                "devDependencies":[
+                    "**/config/webpack/**",
+                    "**/run/**"
+                ]
+            }
         ]
     },
     "ignorePatterns": [
-        "out/"
+        "**/out/",
+        "**/run/scripts/hotreload.js"
     ]
 }
