@@ -11,7 +11,7 @@ compiler.watch(
     aggregateTimeout: 300,
     poll: undefined,
   },
-  (err, stats) => {
+  (err) => {
     if (!err) {
       log.passed(dlog.bundle[1]);
       manifest('development');
