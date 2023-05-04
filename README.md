@@ -10,7 +10,7 @@ This template is for creating Chromium Extensions using React.js and TailwindCSS
     ```
     npm install
     ```
-3. The [run](./run/) directory is where the building happens. Currently, there are two compilation scripts:
+3. The [run](./run/) directory is where the building happens. Currently, there are two compilation scripts and one linting script:
 
     - [npm run dev](./run/dev.js)
         - bundle [webpack development mode](./config/webpack/development.js)
