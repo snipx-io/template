@@ -7,17 +7,17 @@ const watch = chalk.bold.magenta
 
 export const log = {
 	start(message) {
-		console.log(start(`🔧  ${message}`))
-	}, // eslint-disable-line no-console
+		console.log(start(`🔧  ${message}`)) // eslint-disable-line no-console
+	},
 	failed(message) {
-		console.log(error(`❌  ${message}`))
-	}, // eslint-disable-line no-console
+		console.log(error(`❌  ${message}`)) // eslint-disable-line no-console
+	},
 	passed(message) {
-		console.log(success(`✅  ${message}`))
-	}, // eslint-disable-line no-console
+		console.log(success(`✅  ${message}`)) // eslint-disable-line no-console
+	},
 	watch(message) {
-		console.log(watch(`👀  ${message}`))
-	}, // eslint-disable-line no-console
+		console.log(watch(`👀  ${message}`)) // eslint-disable-line no-console
+	},
 }
 
 export const dlog = {
