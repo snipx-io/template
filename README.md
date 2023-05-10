@@ -1,7 +1,9 @@
 # Chromium extension template
+
 This template is for creating Chromium Extensions using React.js and TailwindCSS.
 
 ## How to use
+
 1. First download the repository.
     ```
     git clone https://github.com/snipx-io/template.git
@@ -26,15 +28,19 @@ This template is for creating Chromium Extensions using React.js and TailwindCSS
     - [npm run lint](./run/lint.js)
         - lint all .js files using ESLint
         - optional `--fix` argument
-            - passes *--fix* to ESLint CLI call
+            - passes _--fix_ to ESLint CLI call
 
 ## Configure
-All configs live in the [config](./config/) directory. Currently, you can configure:
-- [Manifest](./config/manifest/)
-- [Webpack](./config/webpack/)
-- [ESLint](./config/.eslintrc.json)
-- [TailwindCSS](./config/tailwindcss.js)
 
-*Note: Manifest and Webpack have common, development, and production configs.*
+All configs live in the [config](./config/) directory. Currently, you can configure:
+
+-   [Manifest](./config/manifest/)
+-   [Webpack](./config/webpack/)
+-   [ESLint](./config/.eslintrc.json)
+-   [TailwindCSS](./config/tailwindcss.js)
+
+_Note: Manifest and Webpack have common, development, and production configs._
+
 ## License
+
 This project is [MIT licensed](./LICENSE).
