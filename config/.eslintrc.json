@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb", 
+        "prettier"
     ],
     "overrides": [
     ],
@@ -14,9 +15,11 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": ["error"],
         "import/extensions": [
             0, { "js": "always" }
         ],
@@ -24,14 +27,10 @@
             "error",
             {
                 "devDependencies":[
-                    "**/config/webpack/**",
+                    "**/config/**",
                     "**/run/**"
                 ]
             }
         ]
-    },
-    "ignorePatterns": [
-        "**/out/",
-        "**/run/scripts/hotreload.js"
-    ]
+    }
 }
