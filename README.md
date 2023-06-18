@@ -1,4 +1,4 @@
-# Chromium extension template
+# Chromium Extension (template)
 
 This template is for creating Chromium Extensions using React.js and TailwindCSS.
 
