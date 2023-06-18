@@ -3,7 +3,8 @@
 	"scripts": {
 		"dev": "node run/dev.js",
 		"build": "node run/build.js",
-		"lint": "node run/lint.js"
+		"lint": "node run/lint.js",
+		"lint --fix": "node run/lint.js --fix"
 	},
 	"dependencies": {
 		"dotenv": "^16.0.3",
