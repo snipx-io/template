@@ -9,7 +9,7 @@ export default merge(common, {
 	devtool: 'cheap-module-source-map',
 	plugins: [
 		new CopyPlugin({
-			patterns: [{ from: 'run/scripts/hotreload.js', to: '' }],
+			patterns: [{ from: 'lib/hotreload.js', to: '' }],
 		}),
 		new HtmlPlugin({
 			filename: 'app.html',
