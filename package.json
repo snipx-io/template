@@ -3,6 +3,7 @@
 	"scripts": {
 		"dev": "node run/dev.js",
 		"build": "node run/build.js",
+		"build --zip": "node run/build.js --zip",
 		"lint": "node run/lint.js",
 		"lint --fix": "node run/lint.js --fix"
 	},
