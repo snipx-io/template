@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import devConfig from '../@webpack/webpack.dev.js' 
+import devConfig from '../@webpack/webpack.dev.js'
 
 import manifest from '../lib/manifest.js'
 import { log, dlog } from '../lib/log.js'

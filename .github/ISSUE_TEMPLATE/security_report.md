@@ -12,6 +12,7 @@ A clear and concise description of what the issue may be.
 
 **Proposed Fix**
 What do you propose would eliminate the issue:
+
 1. Go to '...'
 2. Remove '....'
 3. See error
