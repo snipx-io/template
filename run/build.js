@@ -1,5 +1,5 @@
 import webpack from 'webpack'
-import prodConfig from '../.webpack/webpack.prod.js' 
+import prodConfig from '../@webpack/webpack.prod.js' 
 
 import manifest from './scripts/manifest.js'
 import zip from './scripts/zip.js'
