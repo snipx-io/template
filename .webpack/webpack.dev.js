@@ -2,7 +2,7 @@ import { merge } from 'webpack-merge'
 
 import CopyPlugin from 'copy-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
-import common from './common.js'
+import common from './.webpack.js'
 
 export default merge(common, {
 	mode: 'development',
