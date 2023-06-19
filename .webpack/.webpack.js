@@ -34,9 +34,7 @@ export default {
 						options: {
 							postcssOptions: {
 								plugins: [
-									tailwindcss(
-										path.resolve('config', 'tailwindcss.js')
-									),
+									tailwindcss(),
 									autoprefixer(),
 								],
 							},
