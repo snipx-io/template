@@ -1,8 +1,8 @@
 import webpack from 'webpack'
 import devConfig from '../@webpack/webpack.dev.js' 
 
-import manifest from './scripts/manifest.js'
-import { log, dlog } from './scripts/log.js'
+import manifest from '../lib/manifest.js'
+import { log, dlog } from '../lib/log.js'
 
 const compiler = webpack(devConfig)
 

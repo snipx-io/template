@@ -1,9 +1,9 @@
 import webpack from 'webpack'
 import prodConfig from '../@webpack/webpack.prod.js' 
 
-import manifest from './scripts/manifest.js'
-import zip from './scripts/zip.js'
-import { log, plog } from './scripts/log.js'
+import manifest from '../lib/manifest.js'
+import zip from '../lib/zip.js'
+import { log, plog } from '../lib/log.js'
 
 const compiler = webpack(prodConfig)
 
