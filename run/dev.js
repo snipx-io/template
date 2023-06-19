@@ -1,8 +1,10 @@
-import { development } from './scripts/webpack.js'
+import webpack from 'webpack'
+import devConfig from '../.webpack/webpack.dev.js' 
+
 import manifest from './scripts/manifest.js'
 import { log, dlog } from './scripts/log.js'
 
-const compiler = development()
+const compiler = webpack(devConfig)
 
 log.start(dlog.start)
 
