@@ -1,9 +1,11 @@
-import { production } from './scripts/webpack.js'
+import webpack from 'webpack'
+import prodConfig from '../.webpack/webpack.prod.js' 
+
 import manifest from './scripts/manifest.js'
 import zip from './scripts/zip.js'
 import { log, plog } from './scripts/log.js'
 
-const compiler = production()
+const compiler = webpack(prodConfig)
 
 log.start(plog.start)
 
