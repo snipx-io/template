@@ -1,0 +1,5 @@
+- lint single file(s)
+- dev watch manifest files
+- update zip script
+- dist zip command
+- move log msg to module
