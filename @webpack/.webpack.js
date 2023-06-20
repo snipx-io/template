@@ -1,14 +1,14 @@
-import path from 'path'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
+import p from '../data/path.js'
 
 export default {
 	entry: {
-		app: './src/App.jsx',
+		app: p.app,
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve('out', 'build'),
+		path: p.build,
 		clean: true,
 	},
 	module: {
@@ -25,7 +25,7 @@ export default {
 			},
 			{
 				test: /\.css$/i,
-				include: path.resolve('src', 'styles'),
+				include: p.styles,
 				use: [
 					'style-loader',
 					'css-loader',
