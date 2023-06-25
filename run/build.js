@@ -1,10 +1,26 @@
 import webpack from 'webpack'
-import prodConfig from '../@webpack/webpack.prod.js'
+import { merge } from 'webpack-merge'
+import common from '../webpack.config.js'
+
+// Production Plugins
+import HtmlPlugin from 'html-webpack-plugin'
 
 import manifest from '../lib/manifest.js'
 import { log, plog } from '../lib/log.js'
 
-const compiler = webpack(prodConfig)
+const productionConfig = {
+	mode: 'production',
+	devtool: 'source-map',
+	plugins: [
+		new HtmlPlugin({
+			templateContent: '<html><body><div id="app"></div></body></html>'
+		})
+	]
+}
+
+const compiler = webpack(
+	merge(common, productionConfig)
+)
 
 log.start(plog.start)
 

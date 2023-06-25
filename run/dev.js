@@ -1,10 +1,30 @@
 import webpack from 'webpack'
-import devConfig from '../@webpack/webpack.dev.js'
+import { merge } from 'webpack-merge'
+import common from '../webpack.config.js'
+
+// Development Plugins
+import CopyPlugin from 'copy-webpack-plugin'
+import HtmlPlugin from 'html-webpack-plugin'
 
 import manifest from '../lib/manifest.js'
 import { log, dlog } from '../lib/log.js'
 
-const compiler = webpack(devConfig)
+const developmentConfig = {
+	mode: 'development',
+	devtool: 'cheap-module-source-map',
+	plugins: [
+		new CopyPlugin({
+			patterns: [{ from: 'lib/hotreload.js', to: '' }]
+		}),
+		new HtmlPlugin({
+			templateContent: '<html><body><div id="app"></div><script src="hotreload.js"></script></body></html>'
+		})
+	]
+}
+
+const compiler = webpack(
+	merge(common, developmentConfig)
+)
 
 log.start(dlog.start)
 
