@@ -50,6 +50,7 @@ export default {
 	},
 	plugins: [
 		new HtmlPlugin({
+			// Load HTML filename from 'manifest.json' popup
 			filename: readJSON(p.manifest_entry).action.default_popup
 		})
 	]
