@@ -21,10 +21,6 @@ export default {
 	module: {
 		rules: [
 			{
-				test: /\.json$/,
-				loader: 'json-loader'
-			},
-			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
