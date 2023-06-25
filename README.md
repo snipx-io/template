@@ -1,6 +1,7 @@
 # Chromium Extension (template)
 
-This template is for creating Chromium Extensions using React.js and TailwindCSS.
+pending README rewrite...
+<!-- This template is for creating Chromium Extensions using React.js and TailwindCSS.
 
 ## How to use
 
@@ -43,4 +44,4 @@ _Note: Manifest and Webpack have common, development, and production configs._
 
 ## License
 
-This project is [MIT licensed](./LICENSE).
+This project is [MIT licensed](./LICENSE). -->
