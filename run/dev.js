@@ -7,7 +7,7 @@ import CopyPlugin from 'copy-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
 
 import manifest from './lib/manifest.js'
-import { log, dlog } from './lib/log.js'
+// import { log, dlog } from './lib/log.js'
 
 const developmentConfig = {
 	mode: 'development',
@@ -26,7 +26,7 @@ const compiler = webpack(
 	merge(common, developmentConfig)
 )
 
-log.start(dlog.start)
+// log.start(dlog.start)
 
 compiler.watch(
 	{
@@ -35,11 +35,11 @@ compiler.watch(
 	},
 	err => {
 		if (!err) {
-			log.passed(dlog.bundle[1])
+			// log.passed(dlog.bundle[1])
 			manifest('development')
-			log.watch(dlog.watch)
+			// log.watch(dlog.watch)
 		} else {
-			log.failed(dlog.bundle[0])
+			// log.failed(dlog.bundle[0])
 			console.log(err) // eslint-disable-line no-console
 		}
 	}

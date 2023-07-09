@@ -1,13 +1,13 @@
 import { execSync } from 'child_process'
-import { log, lintlog } from './lib/log.js'
+// import { log, lintlog } from './lib/log.js'
 
 if (process.env.npm_config_fix) {
-	log.start(lintlog.startFix)
+	// log.start(lintlog.startFix)
 	execSync('prettier --write .', { stdio: 'inherit' })
-	log.passed(lintlog.fixed)
+	// log.passed(lintlog.fixed)
 } else {
-	log.start(lintlog.startNoFix)
+	// log.start(lintlog.startNoFix)
 	execSync('eslint .', { stdio: 'inherit' })
 }
 
-log.passed(lintlog.end)
+// log.passed(lintlog.end)

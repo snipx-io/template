@@ -6,7 +6,7 @@ import common from '../webpack.config.js'
 import HtmlPlugin from 'html-webpack-plugin'
 
 import manifest from './lib/manifest.js'
-import { log, plog } from './lib/log.js'
+// import { log, plog } from './lib/log.js'
 
 const productionConfig = {
 	mode: 'production',
@@ -22,17 +22,17 @@ const compiler = webpack(
 	merge(common, productionConfig)
 )
 
-log.start(plog.start)
+// log.start(plog.start)
 
 function runWebpackCompiler (buildManifest) {
 	compiler.run(err => {
 		if (err) console.log(err) // eslint-disable-line no-console
 		compiler.close(closeErr => {
 			if (!closeErr) {
-				log.passed(plog.bundle[1])
+				// log.passed(plog.bundle[1])
 				if(buildManifest === true) manifest('production')
 			} else {
-				log.failed(plog.bundle[0])
+				// log.failed(plog.bundle[0])
 				console.log(closeErr) // eslint-disable-line no-console
 			}
 		})
