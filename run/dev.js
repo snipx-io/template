@@ -6,15 +6,15 @@ import common from '../webpack.config.js'
 import CopyPlugin from 'copy-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
 
-import manifest from '../lib/manifest.js'
-import { log, dlog } from '../lib/log.js'
+import manifest from './lib/manifest.js'
+import { log, dlog } from './lib/log.js'
 
 const developmentConfig = {
 	mode: 'development',
 	devtool: 'cheap-module-source-map',
 	plugins: [
 		new CopyPlugin({
-			patterns: [{ from: 'lib/hotreload.js', to: '' }]
+			patterns: [{ from: 'run/lib/hotreload.js', to: '' }]
 		}),
 		new HtmlPlugin({
 			templateContent: '<html><body><div id="app"></div><script src="hotreload.js"></script></body></html>'

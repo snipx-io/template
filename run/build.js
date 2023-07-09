@@ -5,8 +5,8 @@ import common from '../webpack.config.js'
 // Production Plugins
 import HtmlPlugin from 'html-webpack-plugin'
 
-import manifest from '../lib/manifest.js'
-import { log, plog } from '../lib/log.js'
+import manifest from './lib/manifest.js'
+import { log, plog } from './lib/log.js'
 
 const productionConfig = {
 	mode: 'production',

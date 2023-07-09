@@ -2,7 +2,7 @@
 import 'dotenv/config'
 import fs from 'fs'
 import deepmerge from 'deepmerge'
-import p from '../data/path.js'
+import p from '../../data/path.js'
 
 // Read JSON using absolute paths.
 function readJSON (file) {

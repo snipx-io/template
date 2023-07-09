@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import { log, lintlog } from '../lib/log.js'
+import { log, lintlog } from './lib/log.js'
 
 if (process.env.npm_config_fix) {
 	log.start(lintlog.startFix)
