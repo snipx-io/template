@@ -1,3 +1,4 @@
-out/
+build/
+dist/
 package-lock.json
 run/scripts/hotreload.js
