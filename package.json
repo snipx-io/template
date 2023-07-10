@@ -1,4 +1,7 @@
 {
+	"name": "snipx-template",
+  	"version": "0.0.0",
+  	"description": "This is a template for creating Chromium Extensions using React.js.",
 	"type": "module",
 	"scripts": {
 		"dev": "node run/dev.js",
