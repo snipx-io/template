@@ -4,6 +4,7 @@
   	"description": "This is a template for creating Chromium Extensions using React.js.",
 	"type": "module",
 	"scripts": {
+		"manifest": "node run/manifest.js",
 		"dev": "node run/dev.js",
 		"build": "node run/build.js",
 		"build --zip": "node run/build.js --zip",
