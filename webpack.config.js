@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { readFileSync } from 'fs'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import p from './data/path.js'
@@ -6,7 +6,7 @@ import p from './data/path.js'
 import HtmlPlugin from 'html-webpack-plugin'
 
 function readJSON (file) {
-    return JSON.parse(fs.readFileSync(file))
+    return JSON.parse(readFileSync(file))
 }
 
 export default {
@@ -40,18 +40,12 @@ export default {
 						loader: 'postcss-loader',
 						options: {
 							postcssOptions: {
-								plugins: [tailwindcss(), autoprefixer()],
-							},
-						},
-					},
-				],
-			},
-		],
-	},
-	plugins: [
-		new HtmlPlugin({
-			// Load HTML filename from 'manifest.json' popup
-			filename: readJSON(p.manifest_entry).action.default_popup
-		})
-	]
+								plugins: [tailwindcss(), autoprefixer()]
+							}
+						}
+					}
+				]
+			}
+		]
+	}
 }

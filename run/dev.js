@@ -17,6 +17,7 @@ const developmentConfig = {
 			patterns: [{ from: 'run/lib/hotreload.js', to: '' }]
 		}),
 		new HtmlPlugin({
+			filename: '[name].html',
 			templateContent: '<html><body><div id="app"></div><script src="hotreload.js"></script></body></html>'
 		})
 	]

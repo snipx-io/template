@@ -13,6 +13,7 @@ const productionConfig = {
 	devtool: 'source-map',
 	plugins: [
 		new HtmlPlugin({
+			filename: '[name].html',
 			templateContent: '<html><body><div id="app"></div></body></html>'
 		})
 	]
