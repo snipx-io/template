@@ -7,7 +7,7 @@ import {
     mkdirSync,
 } from 'fs'
 import deepmerge from 'deepmerge'
-import path from '../../data/path.js'
+import path from '../data/path.js'
 import { sep } from 'path'
 
 const pkg = readJSON(path.package_json)
@@ -23,12 +23,12 @@ export default function manifest(target='dev') {
     let compiledManifest
     const mainManifest = readJSON(path.manifest_entry)
 
-    // Split the webpack entry path provided by 'path' 
+    // Split the webpack entry path provided by 'path'
     let dirSplit = path.webpack_entry.split(sep)
     // Split the last element(filename) by '.'
     let fileSplit = dirSplit[dirSplit.length-1].split('.')
     // Replace file extension with 'html'
-    fileSplit[fileSplit.length-1] = 'html' 
+    fileSplit[fileSplit.length-1] = 'html'
     // Then join it all back together in lowercase form
     let file = fileSplit.join('.').toLocaleLowerCase()
 
@@ -46,8 +46,8 @@ export default function manifest(target='dev') {
     }
 
 	// Create output folder
-	if ( !existsSync(path.output) ) { 
-        mkdirSync(path.output) 
+	if ( !existsSync(path.output) ) {
+        mkdirSync(path.output)
     }
 
     // PRODUCTION
@@ -70,7 +70,7 @@ export default function manifest(target='dev') {
     try {
         writeFileSync(
             // First argument: absolute path w/ filename.
-            path.manifest_output, 
+            path.manifest_output,
             // Second: the data to write into the file.
             JSON.stringify(compiledManifest, null, 2)
         )
