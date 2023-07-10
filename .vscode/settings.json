@@ -1,6 +1,10 @@
 {
 	"files.exclude": {
 		"**/node_modules": true,
-		"**/package-lock.*": true
+		"**/package-lock.*": true,
+		"**/CODE_OF_CONDUCT.md": true,
+		"**/CONTRIBUTING.md": true,
+		"**/SECURITY.md": true,
+		"**/LICENSE": true
 	}
 }
