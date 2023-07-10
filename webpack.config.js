@@ -3,8 +3,6 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import p from './data/path.js'
 
-import HtmlPlugin from 'html-webpack-plugin'
-
 function readJSON (file) {
     return JSON.parse(readFileSync(file))
 }
