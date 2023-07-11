@@ -1,13 +1,25 @@
 import chalk from 'chalk'
 
 function compiledMessage (_message, _mode) {
+	let mode
+
+	// Set the mode to either 'production or development'
+	if (_mode === 'prod' || _mode === 'production') mode = 'production'
+	else mode = 'development'
+
 	if (_message.includes('$')) {
-		if (_mode === 'prod' || _mode === 'production') {
-			return _message.replace('$', 'production')
-		} else {
-			return _message.replace('$', 'development')
+		// Split message into words/array
+		let msgs = _message.split(' ')
+		// Find and replace $ for 'mode'
+		for(let i = 0; i < msgs.length; i++) {
+			if(msgs[i] === '$') {
+				msgs[i] = mode
+			}
 		}
+		return msgs.join(' ')
 	}
+
+	return _message
 }
 
 export default {
