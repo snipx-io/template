@@ -1,7 +1,7 @@
 {
 	"name": "snipx-template",
-  "version": "0.0.0",
-  "description": "This is a template for creating Chromium Extensions using React.js.",
+	"version": "0.0.0",
+	"description": "This is a template for creating Chromium Extensions using React.js.",
 	"type": "module",
 	"scripts": {
 		"dev": "node run/dev.js",
@@ -33,6 +33,7 @@
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"html-webpack-plugin": "^5.5.1",
+		"nodemon": "^3.0.1",
 		"postcss": "^8.4.25",
 		"postcss-loader": "^7.3.0",
 		"prettier": "3.0.0",
