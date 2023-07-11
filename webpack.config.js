@@ -1,19 +1,14 @@
-import { readFileSync } from 'fs'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import p from './data/path.js'
-
-function readJSON (file) {
-    return JSON.parse(readFileSync(file))
-}
+import path from './run/data/path.js'
 
 export default {
 	entry: {
-		app: p.webpack_entry,
+		app: path.webpack_entry,
 	},
 	output: {
 		filename: '[name].js',
-		path: p.output,
+		path: path.output,
 		clean: true,
 	},
 	module: {
@@ -30,7 +25,7 @@ export default {
 			},
 			{
 				test: /\.css$/i,
-				include: p.styles,
+				include: path.styles,
 				use: [
 					'style-loader',
 					'css-loader',
