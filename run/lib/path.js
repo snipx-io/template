@@ -1,5 +1,8 @@
+// Imports
 import { resolve } from 'path'
 
+// Absolute paths used throughout the app.
+// We never call upon a path() manually.
 export default {
     package_json: resolve('package.json'),
     webpack_entry: resolve('src/App.jsx'),
