@@ -46,10 +46,10 @@ export default function manifest(target='dev') {
         }
     }
 
+		console.log('snipx: initialize manifest build')
+
 		// Create output folder
 		if ( !existsSync(path.output) ) {
-				console.log('snipx: create '+path.output)
-				// log(msg.manifest.createFolder)
         mkdirSync(path.output)
   	}
 
@@ -71,8 +71,6 @@ export default function manifest(target='dev') {
 		if (process.env.MANIFEST_DEVELOPMENT_KEY) {
 			localManifest["key"] = process.env.MANIFEST_DEVELOPMENT_KEY
 		}
-
-		console.log('snipx: initialize manifest build')
 
 		compiledManifest = deepmerge(localManifest, mainManifest)
 
