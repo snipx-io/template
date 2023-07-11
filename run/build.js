@@ -35,12 +35,12 @@ function runWebpackCompiler (buildManifest) {
 		// Close webpack.
 		webpackCompiler.close(closeErr => {
 			if (!closeErr) {
-				console.log('snipx: webpack had no issues')
+				console.log('snipx: webpack had no issues') // eslint-disable-line no-console
 				// Check for manifest build option.
 				if(buildManifest === true) manifest('production')
-				console.log('snipx: ready for publishing!')
+				console.log('snipx: ready for publishing!') // eslint-disable-line no-console
 			} else {
-				console.log('snipx: webpack ran into issues...')
+				console.log('snipx: webpack ran into issues...') // eslint-disable-line no-console
 				return console.log(closeErr) // eslint-disable-line no-console
 			}
 		})
@@ -49,7 +49,7 @@ function runWebpackCompiler (buildManifest) {
 
 // 'npm run build --webpack'
 if (process.env.npm_config_webpack) {
-	console.log('snipx: initialize webpack build')
+	console.log('snipx: initialize webpack build') // eslint-disable-line no-console
 	// Run compiler with manifest option set to false.
 	runWebpackCompiler(false)
 }
@@ -60,7 +60,7 @@ else if (process.env.npm_config_manifest) {
 }
 // 'npm run build'
 else {
-	console.log('snipx: initialize project build')
+	console.log('snipx: initialize project build') // eslint-disable-line no-console
 	// Run the compiler and build the manifest.
 	runWebpackCompiler(true)
 }

@@ -47,7 +47,7 @@ export default function manifest(target='dev') {
         }
     }
 
-		console.log('snipx: initialize manifest build')
+		console.log('snipx: initialize manifest build') // eslint-disable-line no-console
 
 		// Create the output folder if it doesn't exist.
 		if ( !existsSync(path.output) ) {
@@ -90,10 +90,10 @@ export default function manifest(target='dev') {
           // Second: the data to write into the file.
           JSON.stringify(compiledManifest, null, 2)
         )
-				console.log('snipx: create manifest.json')
+				return console.log('snipx: create manifest.json') // eslint-disable-line no-console
     } catch (writeErr) {
         // Log any errors.
-				console.log('snipx: unable to create manifest.json')
-        console.log(writeErr)
+				console.log('snipx: unable to create manifest.json') // eslint-disable-line no-console
+        return console.log(writeErr) // eslint-disable-line no-console
     }
 }
