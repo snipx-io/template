@@ -1,6 +1,6 @@
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
-import path from './run/data/path.js'
+import path from './run/lib/path.js'
 
 export default {
 	entry: {

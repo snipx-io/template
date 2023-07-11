@@ -8,7 +8,7 @@ import {
 } from 'fs'
 import { sep } from 'path'
 import deepmerge from 'deepmerge'
-import path from '../data/path.js'
+import path from './path.js'
 
 // Reference to meta data to build the manifest.
 const pkg = readJSON(path.package_json)
