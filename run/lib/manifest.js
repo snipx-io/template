@@ -6,10 +6,11 @@ import {
     existsSync,
     mkdirSync,
 } from 'fs'
+import { sep } from 'path'
 import deepmerge from 'deepmerge'
 import path from '../data/path.js'
-import { sep } from 'path'
 
+// Reference to meta data to build the manifest.
 const pkg = readJSON(path.package_json)
 
 // Read JSON using absolute paths.
@@ -20,9 +21,9 @@ function readJSON (file) {
 export default function manifest(target='dev') {
 
     // Variables
+		let mode
     let compiledManifest
     const mainManifest = readJSON(path.manifest_entry)
-
     // Split the webpack entry path provided by 'path'
     let dirSplit = path.webpack_entry.split(sep)
     // Split the last element(filename) by '.'
@@ -45,37 +46,48 @@ export default function manifest(target='dev') {
         }
     }
 
-	// Create output folder
-	if ( !existsSync(path.output) ) {
+		// Create output folder
+		if ( !existsSync(path.output) ) {
+				console.log('snipx: create '+path.output)
+				// log(msg.manifest.createFolder)
         mkdirSync(path.output)
-    }
+  	}
 
-    // PRODUCTION
-    if (target === 'prod' || target === 'production') {
-        if (process.env.MANIFEST_PRODUCTION_KEY) {
-            localManifest["key"] = process.env.MANIFEST_PRODUCTION_KEY
-        }
-        compiledManifest = deepmerge(localManifest, mainManifest)
-    }
+		switch (target) {
+			case 'dev':
+			case 'development':
+				mode = 'development'
+				break
+			case 'prod':
+			case 'production':
+				mode = 'production'
+				break
+			default: mode = 'development'
+		}
 
-    // DEVELOPMENT
-    else {
-        if (process.env.MANIFEST_DEVELOPMENT_KEY) {
-            localManifest["key"] = process.env.MANIFEST_DEVELOPMENT_KEY
-        }
-        compiledManifest = deepmerge(localManifest, mainManifest)
-    }
+		if (process.env.MANIFEST_PRODUCTION_KEY) {
+			localManifest["key"] = process.env.MANIFEST_PRODUCTION_KEY
+		}
+		if (process.env.MANIFEST_DEVELOPMENT_KEY) {
+			localManifest["key"] = process.env.MANIFEST_DEVELOPMENT_KEY
+		}
+
+		console.log('snipx: initialize manifest build')
+
+		compiledManifest = deepmerge(localManifest, mainManifest)
 
     // Try/Catch while using fs sync methods for errors.
     try {
         writeFileSync(
-            // First argument: absolute path w/ filename.
-            path.manifest_output,
-            // Second: the data to write into the file.
-            JSON.stringify(compiledManifest, null, 2)
+          // First argument: absolute path w/ filename.
+          path.manifest_output,
+          // Second: the data to write into the file.
+          JSON.stringify(compiledManifest, null, 2)
         )
+				console.log('snipx: create manifest.json')
     } catch (writeErr) {
         // Log any errors.
+				console.log('snipx: unable to create manifest.json')
         console.log(writeErr)
     }
 }

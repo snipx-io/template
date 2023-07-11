@@ -1,13 +1,14 @@
+// Imports
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
-import common from '../webpack.config.js'
+import commonConfig from '../webpack.config.js'
+import manifest from './lib/manifest.js'
 
-// Production Plugins
+// Webpack Plugins
 import HtmlPlugin from 'html-webpack-plugin'
 
-import manifest from './lib/manifest.js'
-// import { log, plog } from './lib/log.js'
-
+// Use this object to merge with webpack.config.js
+// build.js is for production, dev.js is for development
 const productionConfig = {
 	mode: 'production',
 	devtool: 'source-map',
@@ -19,33 +20,44 @@ const productionConfig = {
 	]
 }
 
-const compiler = webpack(
-	merge(common, productionConfig)
+// Merge webpack.config.js with productionConfig^
+const webpackCompiler = webpack(
+	merge(commonConfig, productionConfig)
 )
 
-// log.start(plog.start)
-
+// Run the webpack compiler with some conditions...
+// If 'buildManifest' == true, only then will we trigger
+// a manifest build as well.
 function runWebpackCompiler (buildManifest) {
-	compiler.run(err => {
+	webpackCompiler.run(err => {
 		if (err) console.log(err) // eslint-disable-line no-console
-		compiler.close(closeErr => {
+		webpackCompiler.close(closeErr => {
 			if (!closeErr) {
-				// log.passed(plog.bundle[1])
+				console.log('snipx: webpack has no issues')
 				if(buildManifest === true) manifest('production')
+				console.log('snipx: ready to host your application!')
 			} else {
-				// log.failed(plog.bundle[0])
-				console.log(closeErr) // eslint-disable-line no-console
+				console.log('snipx: webpack ran into issues...')
+				return console.log(closeErr) // eslint-disable-line no-console
 			}
 		})
 	})
 }
 
-if (process.env.npm_config_W || process.env.npm_config_webpack) {
+// 'npm run build --webpack'
+if (process.env.npm_config_webpack) {
+	console.log('snipx: initialize webpack build')
+	// Run compiler with manifest option set to false.
 	runWebpackCompiler(false)
 }
-else if (process.env.npm_config_M || process.env.npm_config_manifest) {
+// 'npm run build --manifest'
+else if (process.env.npm_config_manifest) {
+	// Run just the manifest script alone.
 	manifest('production')
 }
+// 'npm run build'
 else {
+	console.log('snipx: initialize project build')
+	// Run the compiler and build the manifest.
 	runWebpackCompiler(true)
 }
