@@ -29,11 +29,14 @@ const webpackCompiler = webpack(
 // If 'buildManifest' == true, only then will we trigger
 // a manifest build as well.
 function runWebpackCompiler (buildManifest) {
+	// Begin webpack.
 	webpackCompiler.run(err => {
 		if (err) console.log(err) // eslint-disable-line no-console
+		// Close webpack.
 		webpackCompiler.close(closeErr => {
 			if (!closeErr) {
 				console.log('snipx: webpack had no issues')
+				// Check for manifest build option.
 				if(buildManifest === true) manifest('production')
 				console.log('snipx: ready for publishing!')
 			} else {

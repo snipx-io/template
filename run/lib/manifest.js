@@ -33,6 +33,7 @@ export default function manifest(target='dev') {
     // Then join it all back together in lowercase form
     let file = fileSplit.join('.').toLocaleLowerCase()
 
+		// Use this object to merge with manifest.json
     let localManifest = {
         // This template is built for Chrome Manifest Version 3.
         // https://developer.chrome.com/docs/extensions/mv3/intro
@@ -48,11 +49,12 @@ export default function manifest(target='dev') {
 
 		console.log('snipx: initialize manifest build')
 
-		// Create output folder
+		// Create the output folder if it doesn't exist.
 		if ( !existsSync(path.output) ) {
         mkdirSync(path.output)
   	}
 
+		// Set the build mode.
 		switch (target) {
 			case 'dev':
 			case 'development':
@@ -65,6 +67,9 @@ export default function manifest(target='dev') {
 			default: mode = 'development'
 		}
 
+		// Check if a local '.env' file has the entry of
+		// 'MANIFEST_PRODUCTION_KEY' or 'MANIFEST_DEVELOPMENT_KEY'
+		// If so, add that key to the manifest.
 		if (process.env.MANIFEST_PRODUCTION_KEY) {
 			localManifest["key"] = process.env.MANIFEST_PRODUCTION_KEY
 		}
@@ -72,6 +77,9 @@ export default function manifest(target='dev') {
 			localManifest["key"] = process.env.MANIFEST_DEVELOPMENT_KEY
 		}
 
+		// The manifest.json in the root of the project takes precedence.
+		// localManifest being the object created in this script
+		// mainManifest being the JSON file in the root of the project
 		compiledManifest = deepmerge(localManifest, mainManifest)
 
     // Try/Catch while using fs sync methods for errors.
