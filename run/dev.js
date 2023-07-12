@@ -1,14 +1,15 @@
+// Imports
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import common from '../webpack.config.js'
+import manifest from './lib/manifest.js'
 
-// Development Plugins
+// Webpack Plugins
 import CopyPlugin from 'copy-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
 
-import manifest from './lib/manifest.js'
-// import { log, dlog } from './lib/log.js'
-
+// Use this object to merge with webpack.config.js
+// dev.js is for development, build.js is for production
 const developmentConfig = {
 	mode: 'development',
 	devtool: 'cheap-module-source-map',
@@ -23,24 +24,30 @@ const developmentConfig = {
 	]
 }
 
+// Merge webpack.config.js with developmentConfig^
 const compiler = webpack(
 	merge(common, developmentConfig)
 )
 
-// log.start(dlog.start)
+console.log('snipx: initialize project dev mode') // eslint-disable-line no-console
 
+
+// Run the webpack compiler in watch mode...
+// Build the manifest and check for errors.
 compiler.watch(
+	// https://webpack.js.org/configuration/watch/
 	{
 		aggregateTimeout: 300,
 		poll: undefined,
 	},
 	err => {
 		if (!err) {
-			// log.passed(dlog.bundle[1])
+			console.log('snipx: webpack had no issues') // eslint-disable-line no-console
+			// MANIFEST
 			manifest('development')
-			// log.watch(dlog.watch)
+			console.log('snipx: watching for next change...') // eslint-disable-line no-console
 		} else {
-			// log.failed(dlog.bundle[0])
+			console.log('snipx: webpack had no issues') // eslint-disable-line no-console
 			console.log(err) // eslint-disable-line no-console
 		}
 	}

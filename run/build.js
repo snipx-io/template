@@ -37,6 +37,7 @@ function runWebpackCompiler (buildManifest) {
 			if (!closeErr) {
 				console.log('snipx: webpack had no issues') // eslint-disable-line no-console
 				// Check for manifest build option.
+				// MANIFEST
 				if(buildManifest === true) manifest('production')
 				console.log('snipx: ready for publishing!') // eslint-disable-line no-console
 			} else {
