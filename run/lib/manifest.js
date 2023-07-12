@@ -90,7 +90,7 @@ export default function manifest(target='dev') {
           // Second: the data to write into the file.
           JSON.stringify(compiledManifest, null, 2)
         )
-				return console.log('snipx: create manifest.json') // eslint-disable-line no-console
+				return console.log('snipx: manifest had no issues') // eslint-disable-line no-console
     } catch (writeErr) {
         // Log any errors.
 				console.log('snipx: unable to create manifest.json') // eslint-disable-line no-console
