@@ -1,32 +1,55 @@
-import fs from 'fs'
-import path from 'path'
+// Imports
+import {
+	readFileSync,
+	existsSync,
+	mkdirSync,
+	rmSync
+} from 'fs'
+import { join } from 'path'
+import path from './path.js'
 import bestzip from 'bestzip'
-import json from './json.js'
-import { log, plog } from './log.js'
 
-const manifest = json.read(path.resolve('@manifest', 'common.json'))
-const filename = `${manifest.name}-${manifest.version}.zip`
+// Reference to meta data to build the filename.
+// Publish to a store like 'Chrome Web Store' for review...
+// https://chrome.google.com/webstore/category/extensions
+const pkg = readJSON(path.package_json)
+// pkg is for package.json.
+const filename = `${pkg.name}-${pkg.version}.zip`
+
+// Read JSON using absolute paths.
+function readJSON (file) {
+	return JSON.parse(readFileSync(file))
+}
 
 export default function zip() {
-	if (!fs.existsSync(path.resolve('out', 'dist'))) {
-		fs.mkdirSync(path.resolve('out', 'dist'))
-	} else if (fs.existsSync(path.resolve('out', 'dist', filename))) {
-		fs.rmSync(path.resolve('out', 'dist', filename), {
+
+	// Create the output_zip folder if it doesn't exist.
+	if (!existsSync(path.output_zip)) {
+		mkdirSync(path.output_zip)
+	} else if (existsSync(join(path.output_zip, filename))) {
+		// If the old distributable has the exact same filename, delete the old.
+		rmSync(join(path.output_zip, filename), {
 			recursive: true,
-			force: true,
+			force: true
 		})
 	}
 
+	// Calls native 'zip' command if available,
+	// or falls back to a Node.js implementation.
+	// https://www.npmjs.com/package/bestzip
 	bestzip({
 		source: '*', // zip all contents
-		cwd: path.resolve('out', 'build'), // from output
-		destination: path.resolve('out', 'dist', filename), // into filename
+		cwd: path.output, // from output
+		destination: join(path.output_zip, filename), // into (output_zip) + (filename)
 	})
+		// SUCCESS
 		.then(() => {
-			log.passed(plog.zip[1])
+			console.log('snipx: create .zip distributable') // eslint-disable-line no-console
+			console.log('snipx: ' + join(path.output_zip, filename)) // eslint-disable-line no-console
 		})
+		// ERROR
 		.catch(err => {
-			log.failed(plog.zip[0])
+			console.log('snipx: bestzip ran into some issue...') // eslint-disable-line no-console
 			console.error(err.stack) // eslint-disable-line no-console
 			process.exit(1)
 		})

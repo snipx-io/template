@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import commonConfig from '../webpack.config.js'
 import manifest from './lib/manifest.js'
+import zip from './lib/zip.js'
 
 // Webpack Plugins
 import HtmlPlugin from 'html-webpack-plugin'
@@ -28,7 +29,7 @@ const webpackCompiler = webpack(
 // Run the webpack compiler with some conditions...
 // If 'buildManifest' == true, only then will we trigger
 // a manifest build as well.
-function runWebpackCompiler (buildManifest) {
+function runWebpackCompiler (buildManifest, buildZip) {
 	// Begin webpack.
 	webpackCompiler.run(err => {
 		if (err) console.log(err) // eslint-disable-line no-console
@@ -38,8 +39,16 @@ function runWebpackCompiler (buildManifest) {
 				console.log('snipx: webpack had no issues') // eslint-disable-line no-console
 				// Check for manifest build option.
 				// MANIFEST
-				if(buildManifest === true) manifest('production')
-				console.log('snipx: ready for publishing!') // eslint-disable-line no-console
+				if(buildManifest === true) {
+					manifest('production')
+				}
+				if(buildZip === true) {
+					console.log('snipx: ready for publishing!') // eslint-disable-line no-console
+					zip()
+				}
+				else {
+					console.log('snipx: ready for production!') // eslint-disable-line no-console
+				}
 			} else {
 				console.log('snipx: webpack ran into issues...') // eslint-disable-line no-console
 				return console.log(closeErr) // eslint-disable-line no-console
@@ -58,6 +67,12 @@ if (process.env.npm_config_webpack) {
 else if (process.env.npm_config_manifest) {
 	// Run just the manifest script alone.
 	manifest('production')
+}
+// 'npm run build --zip'
+else if (process.env.npm_config_zip) {
+	console.log('snipx: initialize project build') // eslint-disable-line no-console
+	// Run just the manifest script alone.
+	runWebpackCompiler(true, true)
 }
 // 'npm run build'
 else {
