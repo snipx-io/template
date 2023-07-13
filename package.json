@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "node run/dev.js",
 		"build": "node run/build.js",
-		"lint": "node run/lint.js && prettier . --check"
+		"lint": "node run/lint.js"
 	},
 	"dependencies": {
 		"autoprefixer": "^10.4.14",
