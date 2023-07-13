@@ -4,7 +4,6 @@
 		"**/package-lock.*": true,
 		"**/CODE_OF_CONDUCT.md": true,
 		"**/CONTRIBUTING.md": true,
-		"**/SECURITY.md": true,
-		"**/LICENSE": true
+		"**/SECURITY.md": true
 	}
 }
