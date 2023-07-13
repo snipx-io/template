@@ -2,9 +2,12 @@
 import { ESLint } from 'eslint'
 import { existsSync } from 'fs'
 import { resolve } from 'path'
+// eslint-disable-next-line
+import shell from 'shelljs'
 
 // Variables
 let fix
+let pretty
 // Store validated files here.
 let files = []
 // Reference to the additional arguments.
@@ -23,8 +26,10 @@ function validFile(file) {
 // Set the user defined option of --fix if present.
 // Used in runESLint (line 58 and 60).
 if (process.env.npm_config_fix) {
+	pretty = '--write'
 	fix = true
 } else {
+	pretty = '--check'
 	fix = false
 }
 
@@ -75,9 +80,17 @@ function runESLint() {
 	})
 }
 
-// Future implementation of Prettier API.
+// Implementation of Prettier API.
 function runPrettier() {
-	console.log('run prettier') // eslint-disable-line no-console
+	let command
+	files.forEach(file => {
+		command = `prettier ${file} ${pretty}`
+	})
+	shell.exec(command)
+	// if (shell.exec(command).code !== 0) {
+	// 	shell.echo('Error: prettier failed')
+	// 	shell.exit(1)
+	// }
 }
 
 // Run ESLint. Already configured to work with Prettier.
