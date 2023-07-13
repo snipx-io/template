@@ -1,6 +1,7 @@
 # Chromium Extension (template)
 
 pending README rewrite...
+
 <!-- This template is for creating Chromium Extensions using React.js and TailwindCSS.
 
 ## How to use
