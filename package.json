@@ -39,6 +39,7 @@
 		"postcss": "^8.4.25",
 		"postcss-loader": "^7.3.3",
 		"prettier": "3.0.0",
+		"shelljs": "^0.8.5",
 		"style-loader": "^3.3.3",
 		"webpack": "^5.88.1",
 		"webpack-cli": "^5.1.4",
