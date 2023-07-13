@@ -1,12 +1,12 @@
+// Webpack Plugins
+import HtmlPlugin from 'html-webpack-plugin'
+
 // Imports
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import commonConfig from '../webpack.config.js'
 import manifest from './lib/manifest.js'
 import zip from './lib/zip.js'
-
-// Webpack Plugins
-import HtmlPlugin from 'html-webpack-plugin'
 
 // Use this object to merge with webpack.config.js
 // build.js is for production, dev.js is for development
@@ -16,20 +16,18 @@ const productionConfig = {
 	plugins: [
 		new HtmlPlugin({
 			filename: '[name].html',
-			templateContent: '<html><body><div id="app"></div></body></html>'
-		})
-	]
+			templateContent: '<html><body><div id="app"></div></body></html>',
+		}),
+	],
 }
 
 // Merge webpack.config.js with productionConfig^
-const webpackCompiler = webpack(
-	merge(commonConfig, productionConfig)
-)
+const webpackCompiler = webpack(merge(commonConfig, productionConfig))
 
 // Run the webpack compiler with some conditions...
 // If 'buildManifest' == true, only then will we trigger
 // a manifest build as well.
-function runWebpackCompiler (buildManifest, buildZip) {
+function runWebpackCompiler(buildManifest, buildZip) {
 	// Begin webpack.
 	webpackCompiler.run(err => {
 		if (err) console.log(err) // eslint-disable-line no-console
@@ -39,20 +37,18 @@ function runWebpackCompiler (buildManifest, buildZip) {
 				console.log('snipx: webpack had no issues') // eslint-disable-line no-console
 				// Check for manifest build option.
 				// MANIFEST
-				if(buildManifest === true) {
+				if (buildManifest === true) {
 					manifest('production')
 				}
-				if(buildZip === true) {
-					console.log('snipx: ready for publishing!') // eslint-disable-line no-console
+				if (buildZip === true) {
 					zip()
-				}
-				else {
-					console.log('snipx: ready for production!') // eslint-disable-line no-console
 				}
 			} else {
 				console.log('snipx: webpack ran into issues...') // eslint-disable-line no-console
 				return console.log(closeErr) // eslint-disable-line no-console
 			}
+			console.log('snipx: ready for publishing!') // eslint-disable-line no-console
+			return true
 		})
 	})
 }
