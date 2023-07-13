@@ -12,5 +12,13 @@
 	"arrowParens": "avoid",
 	"endOfLine": "lf",
 	"embeddedLanguageFormatting": "off",
-	"singleAttributePerLine": true
+	"singleAttributePerLine": true,
+	"overrides": [
+		{
+			"files": "LICENSE",
+			"options": {
+				"parser": "markdown"
+			}
+		}
+	]
 }
