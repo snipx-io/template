@@ -1,12 +1,12 @@
+// Webpack Plugins
+import CopyPlugin from 'copy-webpack-plugin'
+import HtmlPlugin from 'html-webpack-plugin'
+
 // Imports
 import webpack from 'webpack'
 import { merge } from 'webpack-merge'
 import common from '../webpack.config.js'
 import manifest from './lib/manifest.js'
-
-// Webpack Plugins
-import CopyPlugin from 'copy-webpack-plugin'
-import HtmlPlugin from 'html-webpack-plugin'
 
 // Use this object to merge with webpack.config.js
 // dev.js is for development, build.js is for production
@@ -15,22 +15,20 @@ const developmentConfig = {
 	devtool: 'cheap-module-source-map',
 	plugins: [
 		new CopyPlugin({
-			patterns: [{ from: 'run/lib/hotreload.js', to: '' }]
+			patterns: [{ from: 'run/lib/hotreload.js', to: '' }],
 		}),
 		new HtmlPlugin({
 			filename: '[name].html',
-			templateContent: '<html><body><div id="app"></div><script src="hotreload.js"></script></body></html>'
-		})
-	]
+			templateContent:
+				'<html><body><div id="app"></div><script src="hotreload.js"></script></body></html>',
+		}),
+	],
 }
 
 // Merge webpack.config.js with developmentConfig^
-const compiler = webpack(
-	merge(common, developmentConfig)
-)
+const compiler = webpack(merge(common, developmentConfig))
 
 console.log('snipx: initialize project dev mode') // eslint-disable-line no-console
-
 
 // Run the webpack compiler in watch mode...
 // Build the manifest and check for errors.
