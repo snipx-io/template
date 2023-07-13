@@ -10,6 +10,7 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "prettier"],
+	"ignorePatterns": ["build/", "dist/", "run/lib/hotreload.js"],
 	"rules": {
 		"prettier/prettier": ["error"],
 		"import/extensions": [0, { "js": "always" }],
