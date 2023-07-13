@@ -24,7 +24,6 @@ function validFile(file) {
 }
 
 // Set the user defined option of --fix if present.
-// Used in runESLint (line 58 and 60).
 if (process.env.npm_config_fix) {
 	pretty = '--write'
 	fix = true
@@ -54,11 +53,11 @@ if (files.length >= 1) {
 
 console.log('snipx: initialize project linter') // eslint-disable-line no-console
 console.log('snipx: include the following file(s)') // eslint-disable-line no-console
-console.log('snipx:', files) // eslint-disable-line no-console
+console.log('snipx:', files, '\n') // eslint-disable-line no-console
 
-// Now we can run ESLint!
+// Implementation of ESLint (API).
 // https://eslint.org/docs/latest/integrate/nodejs-api#eslint-class
-function runESLint() {
+function runESLintAPI() {
 	// eslint-disable-next-line
 	(async function main() {
 		const eslint = new ESLint({ fix })
@@ -80,19 +79,38 @@ function runESLint() {
 	})
 }
 
-// Implementation of Prettier API.
-function runPrettier() {
-	let command
-	files.forEach(file => {
-		command = `prettier ${file} ${pretty}`
-	})
-	shell.exec(command)
-	// if (shell.exec(command).code !== 0) {
-	// 	shell.echo('Error: prettier failed')
-	// 	shell.exit(1)
-	// }
+// Before running ESLint, check if it's a .js file.
+function runESLint() {
+	if (files[0] !== resolve()) {
+		files.forEach(file => {
+			if (file.substr(file.length - 3) === '.js') {
+				runESLintAPI()
+			} else {
+				console.log('snipx: no "js/jsx" file detected') // eslint-disable-line no-console
+				console.log('snipx: eslint turned off for this process \n') // eslint-disable-line no-console
+			}
+		})
+	} else {
+		runESLintAPI()
+	}
 }
 
-// Run ESLint. Already configured to work with Prettier.
+// Implementation of Prettier (CLI).
+// https://prettier.io/docs/en/cli.html
+function runPrettier() {
+	// Run on every file entry.
+	// Update this implementation to allow globs as well as files.
+	files.forEach(file => {
+		try {
+			shell.exec(`prettier ${file} ${pretty}`)
+		} catch (execError) {
+			console.error(execError) // eslint-disable-line no-console
+		}
+	})
+	// Add line for readability in the console.
+	console.log('') // eslint-disable-line no-console
+}
+
+// Run ESLint and Prettier.
 runESLint()
 runPrettier()
