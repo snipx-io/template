@@ -58,8 +58,7 @@ console.log('snipx:', files, '\n') // eslint-disable-line no-console
 // Implementation of ESLint (API).
 // https://eslint.org/docs/latest/integrate/nodejs-api#eslint-class
 function runESLintAPI() {
-	// eslint-disable-next-line
-	(async function main() {
+	;(async function main() {
 		const eslint = new ESLint({ fix })
 		const results = await eslint.lintFiles(files)
 		if (fix) {

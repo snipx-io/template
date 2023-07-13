@@ -1,28 +1,21 @@
 // Imports
-import {
-	readFileSync,
-	existsSync,
-	mkdirSync,
-	rmSync
-} from 'fs'
+import { readFileSync, existsSync, mkdirSync, rmSync } from 'fs'
 import { join } from 'path'
-import path from './path.js'
 import bestzip from 'bestzip'
-
-// Reference to meta data to build the filename.
-// Publish to a store like 'Chrome Web Store' for review...
-// https://chrome.google.com/webstore/category/extensions
-const pkg = readJSON(path.package_json)
-// pkg is for package.json.
-const filename = `${pkg.name}-${pkg.version}.zip`
+import path from './path.js'
 
 // Read JSON using absolute paths.
-function readJSON (file) {
+function readJSON(file) {
 	return JSON.parse(readFileSync(file))
 }
 
-export default function zip() {
+// Reference to meta data to build the filename.
+const pkg = readJSON(path.package_json)
 
+// pkg is for package.json.
+const filename = `${pkg.name}-${pkg.version}.zip`
+
+export default function zip() {
 	// Create the output_zip folder if it doesn't exist.
 	if (!existsSync(path.output_zip)) {
 		mkdirSync(path.output_zip)
@@ -30,7 +23,7 @@ export default function zip() {
 		// If the old distributable has the exact same filename, delete the old.
 		rmSync(join(path.output_zip, filename), {
 			recursive: true,
-			force: true
+			force: true,
 		})
 	}
 
@@ -45,7 +38,7 @@ export default function zip() {
 		// SUCCESS
 		.then(() => {
 			console.log('snipx: create .zip distributable') // eslint-disable-line no-console
-			console.log('snipx: ' + join(path.output_zip, filename)) // eslint-disable-line no-console
+			console.log(`snipx: ${join(path.output_zip, filename)}`) // eslint-disable-line no-console
 		})
 		// ERROR
 		.catch(err => {
