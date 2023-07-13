@@ -36,13 +36,14 @@ for (let i = 0; i < commands.length; i += 1) {
 	}
 }
 
-// If there are no validated files at all.
-if (files.length === 0) {
-	files = [resolve()]
-}
-
-// If / (root) was added to the array, remove everything else.
-if (files.includes(resolve())) {
+// If there are validated files, check if 'root' is in the bunch.
+if (files.length >= 1) {
+	// If / (root) was added to the array, remove everything else.
+	if (files.includes(resolve())) {
+		files = [resolve()]
+	}
+} else {
+	// If no valid files, make / (root) the entry point.
 	files = [resolve()]
 }
 
@@ -74,5 +75,11 @@ function runESLint() {
 	})
 }
 
+// Future implementation of Prettier API.
+function runPrettier() {
+	console.log('run prettier') // eslint-disable-line no-console
+}
+
 // Run ESLint. Already configured to work with Prettier.
 runESLint()
+runPrettier()
