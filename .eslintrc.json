@@ -5,10 +5,10 @@
 	},
 	"extends": ["plugin:react/recommended", "airbnb", "prettier"],
 	"overrides": [],
-	"parser": "@babel/eslint-parser",
 	"parserOptions": {
-		"requireConfigFile": false,
 		"ecmaVersion": "latest",
+		"parser": "@babel/eslint-parser",
+		"requireConfigFile": false,
 		"sourceType": "module"
 	},
 	"plugins": ["react", "prettier"],
