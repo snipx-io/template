@@ -34,7 +34,7 @@
 		"eslint-plugin-react": "^7.33.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"html-webpack-plugin": "^5.5.3",
-		"postcss": "^8.4.26",
+		"postcss": "^8.4.27",
 		"postcss-loader": "^7.3.3",
 		"prettier": "3.0.0",
 		"shelljs": "^0.8.5",
